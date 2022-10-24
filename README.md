@@ -2,5 +2,5 @@
 
 En esta entrega participamos únicamente 2 compañeros:
 
-Nadia Marsal
+Nadia Marsal \n
 Lucas Villarrubia
