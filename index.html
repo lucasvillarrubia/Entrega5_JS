@@ -20,11 +20,46 @@
 			<nav class="navbar">
 				<ul class="navbar-list">
 					<li><a href="/index.html"><i class="fa-solid fa-house"></i></a></li>
-					<li><a id="boton_carrito" href="#shop"><i class="fa-solid fa-cart-shopping"></i></a></li>
+					<li id="open-cart"><i class="fa-solid fa-cart-shopping"></i></li>
 					<li><a href="#user"><i class="fa-solid fa-user"></i></a></li>
 				</ul>
 			</nav>
 		</header>
+
+		<!-- Cart section -->
+		<section id="cart" class="invisible">
+			<div class="datos-carrito">
+				<button id="exit-cart" class="btn-ver">X</button>
+				<div>
+					<p>Tus productos</p>
+					<div id="cart-products">
+						<p>Todavía no agregaste ningún producto</p>
+					</div>
+				</div>
+				<div class="numeros-carrito">
+					<div class="gastos-carrito">
+						<div>
+							<p>Subtotal:</p>
+							<p id="subtotal">$0</p>
+						</div>
+						<div>
+							<p>Envío:</p>
+							<p id="envio">Gratis</p>
+						</div>
+					</div>
+					<span></span>
+					<div class="final-compra">
+						<div>
+							<p>Total:</p>
+							<p id="total">$0</p>
+						</div>
+						<button id="purchase" class="btn-ver">COMPRAR</button>
+						<a id="view-more" href="#categorias">Ver más productos</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
 
 		<!-- Hero section -->
 		<section id="hero">
@@ -32,7 +67,7 @@
 				<h1>Si tenes Zappi,</h1>
 				<h2>tenes Nucba.</h2>
 				<h6>Busca lo que quieras y nucba te quedes sin comida.</h6>
-				<button class="btn-ver"><a class="btn-ver" href="#categorias">VER MÁS</a></button>
+				<button class="btn-ver"><a class="btn-ver" href="#recomendaciones">VER MÁS</a></button>
 			</div>
 			<div class="img-hero">
 				<img src="/assets/imgs/imgpizzas/Iconpizza.png" alt="Zappi Icon" id="img-pizza">
@@ -40,44 +75,52 @@
 		</section>
 
 		<!-- Recomendaciones -->
-		<p>Hoy te recomendamos</p>
+		<p class="subtitulos">Hoy te recomendamos</p>
 		<section id="recomendaciones">
 		</section>
 
 		<!-- Categorias -->
-		<p class="p-cat">Categorias</p>
+		<p class="subtitulos"><b>Categorias</b></p>
 		<section id="categorias">
-			<div id="populares" class="cards-c">
+			<div id="populares" class="cards-c cat-selected">
 				<img src="./assets/imgs/icons/otrapizza.png" alt="pizza3D">
 				<p>Populares</p>
+				<span></span>
 			</div>
 			<div id="pizzas" class="cards-c">
 				<img src="./assets/imgs/icons/pizza.png" alt="pizza">
 				<p>Pizzas</p>
+				<span></span>
 			</div>
 			<div id="hamburguesas" class="cards-c">
 				<img src="./assets/imgs/icons/burger.png" alt="hamburguesa">
 				<p>Hamburguesas</p>
+				<span></span>
 			</div>
 			<div id="papas" class="cards-c">
 				<img src="./assets/imgs/icons/papas.png" alt="papas">
 				<p>Napapuki</p>
+				<span></span>
 			</div>
 			<div id="wraps" class="cards-c">
 				<img src="./assets/imgs/icons/70578698115b544cbf5926db06990469.png" alt="burrito">
 				<p>Wraps</p>
+				<span></span>
 			</div>
 			<div id="mexican" class="cards-c">
 				<img src="./assets/imgs/icons/taco.png" alt="taco">
 				<p>Mexican Food</p>
+				<span></span>
 			</div>
 			<div id="batidos" class="cards-c">
 				<img src="./assets/imgs/icons/1d62fda007e4e5b77417b6c611b6d329.png" alt="smoothie">
 				<p>Batidos</p>
+				<span></span>
 			</div>
 		</section>
 
 		<!-- Productos en display -->
+		<p class="subtitulos">Productos disponibles</p>
 		<section id="productos">
 		</section>
 

@@ -6,7 +6,6 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    font-family: sans-serif;
 }
 
 html {
@@ -16,6 +15,7 @@ html {
 body {
     width: 100%;
     background: #131415;
+    font-family: "Monserrat", sans-serif;
 }
 
 header {
@@ -27,6 +27,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0px 80px 0px 50px;
+    position: sticky;
+    top: 0;
 }
 
 .img-hero{
@@ -67,15 +69,12 @@ header {
     display:none;
 } */
 
-section {
+#hero {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 70px;
-    gap: 30px;
     width: 100%;
-    max-width: 1300px;
     color: white;
 }
 
@@ -127,41 +126,144 @@ p {
     font-size: 22px;
 }
 
-#recomendaciones {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.invisible {
+    display: none;
 }
 
-.cards-r{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    width: 300px;
-    height: 103px;
-    background: #252525;
-    border-radius: 15px;
+#cart {
+    position: fixed;
+    top: 0;
+    /* right: 0; */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
 }
 
+#cart a {
+    color: #909090;
+    font-size: 12px;
+}
 
-.p-cat{
+#cart span {
+    height: 1px;
+    width: 325px;
+    background: #606060;
+}
+
+#cart-products {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#cart-products p {
+    color: #909090;
+    font-size: 12px;
+    width: 150px;
+    text-align: center;
+}
+
+.datos-carrito {
     position: absolute;
-    top: 850px;
-    left: 190px;
+    right: 0;
+    width: 350px;
+    min-height: 350px;
+    background-color: #252525;
+    padding: 20px;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    gap: 20px;
+}
+
+.numeros-carrito {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+}
+
+.numeros-carrito div {
+    width: 90%;
+}
+
+.gastos-carrito div, .final-compra div {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gastos-carrito p {
+    font-size: 15px;
+}
+
+.final-compra {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.final-compra p {
+    font-size: 25px;
+}
+
+#total {
+    font-size: 30px;
+    font-weight: bold;
+    background: linear-gradient(#FFA100, #FB103D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#recomendaciones {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+.cards-recomendaciones {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 325px;
+    height: 100px;
+    background: #252525;
+    border-radius: 15px;
+    padding: 15px;
+    gap: 10px;
+}
+
+.recomendaciones-imgs {
+    max-width: 70px;
+    height: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+
+.subtitulos{
+    margin: 100px 50px 20px;
     color: white;
 }
 
 #categorias {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 #categorias div img {
@@ -185,41 +287,73 @@ p {
     cursor: pointer;
 }
 
+.cards-c span {
+    background-image: linear-gradient(90deg, #FFA100,#FB103D);
+    font-size: 10px;
+    height: 5px;
+    width: 20px;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.cat-selected {
+    background: #909090;
+}
+
+.datos-prod {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .nombre-prod {
     font-size: 15px;
 }
 
 .precio-prod {
     font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(#FFA100, #FB103D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .comentario-prod {
     font-size: 10px;
+    color: #999999;
 }
 
 #productos{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; 
-    width: 1300px;
-    gap: 10px;
+    display: grid;
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    column-gap: 40px;
+    row-gap: 30px;
+    /* gap: 30px;s */
 }
 
-.cards-p{
+.cards-productos{
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 280px;
-    height: 213px;
+    height: 220px;
     background: #252525;
     border-radius: 15px;
+    padding: 15px;
 }
 
-#pop-imgs, .prod-imgs{
-    width: 150px;
+#pop-imgs, .productos-imgs{
+    width: 100%;
+    max-height: 120px;
+    /* max-width: 150px; */
     border-radius: 16px;
+    object-fit: cover;
 }
 
 footer{
@@ -246,6 +380,7 @@ footer{
     font-family: 'Montserrat';
     font-weight: 700;
     font-size: 14px;
+    border: none;
 }
 
 .btns-add {
@@ -253,8 +388,8 @@ footer{
     box-shadow: 11px 28px 50px rgba(20, 78, 90, 0.2);
     border-radius: 15px;
     /* position: absolute; */
-    width: 54px;
-    height: 15px;
+    width: 100px;
+    height: 30px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
@@ -262,4 +397,24 @@ footer{
     line-height: 15px;
     letter-spacing: 0.5px;
     color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+}
+
+#exit-cart {
+    height: 25px;
+    width: 25px;
+    font-size: 10px;
+    border-radius: 5px;
+}
+
+#purchase {
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#recomendaciones, #categorias, #productos {
+    margin: 0 50px;
 }

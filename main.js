@@ -28,7 +28,28 @@ const productosStock = [
         new producto (8, "Nick Gi", "./assets/imgs/imgpizzas/NickGi.jfif", "La que desaparece", 0, "pizzas", 0, false),
         new producto (9, "Bennazianna", "./assets/imgs/imgpizzas/bennazianna.jfif", "La más completa", 3650, "pizzas", 0, false),
         new producto (10, "Tronco-Pizza", "./assets/imgs/imgpizzas/tronco.jfif", "Para todo el día", 870, "pizzas", 0, false),
-        new producto (11, "Papas | Provenzal", "./assets/imgs/imgpizzas/papitas.jfif", "Van como piña", 360, "papas", 0, false)
+        new producto (11, "Papas | Provenzal", "./assets/imgs/imgpizzas/papitas.jfif", "Van como piña", 360, "papas", 0, false),
+
+        new producto (12, "", "", "", 0, "papas", 0, false),
+        new producto (13, "", "", "", 0, "papas", 0, false),
+        new producto (14, "", "", "", 0, "papas", 0, false),
+        new producto (15, "", "", "", 0, "papas", 0, false),
+        new producto (16, "", "", "", 0, "hamburguesas", 0, false),
+        new producto (17, "", "", "", 0, "hamburguesas", 0, false),
+        new producto (18, "", "", "", 0, "hamburguesas", 0, false),
+        new producto (19, "", "", "", 0, "hamburguesas", 0, false),
+        new producto (20, "", "", "", 0, "wraps", 0, false),
+        new producto (21, "", "", "", 0, "wraps", 0, false),
+        new producto (22, "", "", "", 0, "wraps", 0, false),
+        new producto (23, "", "", "", 0, "mexican", 0, false),
+        new producto (24, "", "", "", 0, "mexican", 0, false),
+        new producto (25, "", "", "", 0, "mexican", 0, false),
+        new producto (26, "", "", "", 0, "mexican", 0, false),
+        new producto (27, "", "", "", 0, "mexican", 0, false),
+        new producto (28, "", "", "", 0, "batidos", 0, false),
+        new producto (29, "", "", "", 0, "batidos", 0, false),
+        new producto (30, "", "", "", 0, "batidos", 0, false),
+        new producto (31, "", "", "", 0, "batidos", 0, false)
 ];
 
 let productosCarrito = [];
@@ -49,9 +70,12 @@ const categoriasProductos = [populares, pizzas, hamburguesas, papas, wraps, mexi
 
 const seccionProductos = document.getElementById("productos");
 const seccionRecomendaciones = document.getElementById("recomendaciones");
-const seccionCarrito = document.getElementById("carrito");
-const openCarrito = document.getElementById("boton_carrito");
-const botonComprar = document.getElementById("boton_compra");
+const carrito = document.getElementById("cart");
+const seccionCarrito = document.getElementById("cart-products");
+const openCarrito = document.getElementById("open-cart");
+const closeCarrito = document.getElementById("exit-cart");
+const botonComprar = document.getElementById("purchase");
+const verMasProd = document.getElementById("view-more");
 
 
 
@@ -60,14 +84,16 @@ const botonComprar = document.getElementById("boton_compra");
 
 const mostrar_producto = (seccion, producto) => {
         seccion.innerHTML = seccion.innerHTML + `
-                <div class="cards-p">
-			<img src="${producto.imagen}" alt="imagen-prod-${producto.id}" class="prod-imgs">
-			<div class="info-prod">
-				<p class="nombre-prod">${producto.nombre}</p>
-				<p class="comentario-prod">${producto.comentario}</p>
-				<p class="precio-prod">${producto.precio}</p>
-			</div>
-			<button class="btns-add">AGREGAR</button>
+                <div class="cards-${seccion.id}">
+			<img src="${producto.imagen}" alt="imagen-prod-${producto.id}" class="${seccion.id}-imgs">
+                        <div class="datos-prod">
+                                <div class="info-prod">
+                                        <p class="nombre-prod">${producto.nombre}</p>
+                                        <p class="comentario-prod">${producto.comentario}</p>
+                                        <p class="precio-prod">$${producto.precio}</p>
+                                </div>
+                                <button class="btns-add">AGREGAR</button>
+                        </div>
 		</div>
                 `;
 };
@@ -81,6 +107,7 @@ const filtrar_productos = (categoria) => {
         else {
                 productos_para_mostrar = productosStock.filter ((producto) => producto.categoria == categoria);
         }
+        seccionProductos.innerHTML = "";
         productos_para_mostrar.forEach ((producto) => mostrar_producto(seccionProductos, producto));
 }
 
@@ -137,7 +164,18 @@ const actualizar_carrito = () => {
 const init = () => {
         render_productos ();
         render_productos ("recomendaciones");
-        papas.addEventListener('click', () => render_productos("nose", "papas"));
+        categoriasProductos.forEach ((categoria) => {
+                categoria.addEventListener('click', () => {
+                        categoriasProductos.forEach((cat) => cat.classList.remove("cat-selected"));
+                        categoria.classList.add("cat-selected");
+                        render_productos(null, categoria.id);
+                })
+        });
+        openCarrito.addEventListener('click', () => carrito.classList.remove("invisible"));
+        closeCarrito.addEventListener('click', () => carrito.classList.add("invisible"));
+        verMasProd.addEventListener('click', () => carrito.classList.add("invisible"));
+        botonComprar.addEventListener('click', () => alert("Perfecto! Compra realizada."));
+        // papas.addEventListener('click', () => render_productos("nose", "papas"));
         //actualizar_carrito ();
 };
 
